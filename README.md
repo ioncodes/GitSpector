@@ -50,9 +50,11 @@ Start GitSpector and have fun :)
 
 # Picture time!
 GIF of the tool:
-![gif](http://i.imgur.com/zZ6aXmz.gifv)
+
+![gif](http://i.imgur.com/zZ6aXmz.gif)
 
 It closes/minimizes into tray!
+
 ![png](http://i.imgur.com/a1GfCLp.png)
 
 # Features
