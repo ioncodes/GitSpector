@@ -15,7 +15,7 @@ function createWindow () {
     tray.setToolTip('Open GitSpector')
     tray.setContextMenu(contextMenu)
 
-    win = new BrowserWindow({width: 350, height: 639, resizable: false, maximizable: false, fullscreenable: false, title: 'GitSpector', icon: __dirname + '/icons/icon.ico'})
+    win = new BrowserWindow({width: 350, height: 639, resizable: true, maximizable: false, fullscreenable: false, title: 'GitSpector', icon: __dirname + '/icons/icon.ico'})
 
     win.loadURL(url.format({
         pathname: path.join(__dirname, '/src/index.html'),

@@ -15,11 +15,36 @@ function load() {
             var git = json[i].git;
             var name = json[i].name;
             var success;
+            var head = document.createElement('div');
+            head.className = 'head';
+            head.innerText = name;
             if(url !== "") {
                 request('GET', url).done(function (res) {
                     var body = JSON.parse(res.body.toString('utf-8'));
                     process.nextTick(function() {
-                        success = body.build.status; /* STATUS */
+                        if(body.build.status === 'success') {
+                            success = true;
+                        } else {
+                            success = false;
+                        }
+                        if(success) {
+                            var checkmark = document.createElement('span');
+                            checkmark.className = 'checkmark';
+                            var checkmark_stem = document.createElement('div');
+                            checkmark_stem.className = 'checkmark_stem';
+                            var checkmark_kick = document.createElement('div');
+                            checkmark_kick.className = 'checkmark_kick';
+                            checkmark.appendChild(checkmark_stem);
+                            checkmark.appendChild(checkmark_kick);
+
+                            head.appendChild(checkmark);
+                        } else {
+                            var cross = document.createElement('div');
+                            cross.className = 'cross';
+                            cross.innerText = 'x';
+
+                            head.appendChild(cross);
+                        }
                         console.log(success);
                     });
                 });
@@ -38,9 +63,7 @@ function load() {
                     var statisticWrap = document.createElement('div');
                     statisticWrap.className = 'statistic-wrap';
 
-                    var head = document.createElement('div');
-                    head.className = 'head';
-                    head.innerText = name;
+
 
                     statisticWrap.appendChild(head);
 
