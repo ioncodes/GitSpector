@@ -115,6 +115,7 @@ body {
     padding: 40px 30px;
     position: relative;
 }
+/*
 .category:nth-child(1) {
     background: #f64c73
 }
@@ -123,6 +124,22 @@ body {
 }
 .category:nth-child(3) {
     background: #c873f4
+}
+*/
+.category:nth-child(1) {
+    background: #a8bf9a
+}
+.category:nth-child(2) {
+    background: #ddca7e
+}
+.category:nth-child(3) {
+    background: #d6877a
+}
+.category:nth-child(4) {
+    background: #73748c
+}
+.category:nth-child(5) {
+    background: #8a98a3
 }
 .category .statistic-wrap,
 .category .statistic-wrap .head {
@@ -156,3 +173,12 @@ body {
 .fa {
     margin-left: 10px;
 }
+
+.topcorner{
+    position: -webkit-sticky;
+    position: sticky;
+    position: absolute;
+    z-index: 999;
+    top: 10px;
+    right: 10px;
+  }
