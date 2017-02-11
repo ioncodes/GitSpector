@@ -153,39 +153,6 @@ body {
     height: 600px;
 }
 
-
-.checkmark {
-    display:inline-block;
-    width: 22px;
-    height:22px;
-    -ms-transform: rotate(45deg); /* IE 9 */
-    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
-    transform: rotate(45deg);
-}
-
-.checkmark_stem {
-    position: absolute;
-    width:3px;
-    height:9px;
-    background-color: white;
-    left:13px;
-    top:9px;
-}
-
-.checkmark_kick {
-    position: absolute;
-    width:3px;
-    height:3px;
-    background-color: white;
-    left:10px;
-    top:15px;
-}
-
-.cross {
-    font-size: 14px;
-    display:inline-block;
-    color:white;
-    top:40px;
-    right:80px;
-    position:absolute;
+.fa {
+    margin-left: 10px;
 }

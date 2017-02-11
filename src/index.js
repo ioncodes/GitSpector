@@ -28,21 +28,14 @@ function load() {
                             success = false;
                         }
                         if(success) {
-                            var checkmark = document.createElement('span');
-                            checkmark.className = 'checkmark';
-                            var checkmark_stem = document.createElement('div');
-                            checkmark_stem.className = 'checkmark_stem';
-                            var checkmark_kick = document.createElement('div');
-                            checkmark_kick.className = 'checkmark_kick';
-                            checkmark.appendChild(checkmark_stem);
-                            checkmark.appendChild(checkmark_kick);
-
+                            var checkmark = document.createElement('i');
+                            checkmark.className = 'fa fa-check';
+                            checkmark.setAttribute('aria-hidden', 'true');
                             head.appendChild(checkmark);
                         } else {
-                            var cross = document.createElement('div');
-                            cross.className = 'cross';
-                            cross.innerText = 'x';
-
+                            var cross = document.createElement('i');
+                            cross.className = 'fa fa-times';
+                            cross.setAttribute('aria-hidden', 'true');
                             head.appendChild(cross);
                         }
                         console.log(success);
@@ -63,13 +56,7 @@ function load() {
                     var statisticWrap = document.createElement('div');
                     statisticWrap.className = 'statistic-wrap';
 
-
-
                     statisticWrap.appendChild(head);
-
-                    var moon = document.createElement('i');
-                    moon.className = 'fa fa-moon-o';
-                    head.appendChild(moon);
 
                     for(var j = 0; j < 3; j++) {
                         var statistic = document.createElement('div');
