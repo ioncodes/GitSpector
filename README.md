@@ -46,7 +46,7 @@ settings.json stores your authentication data for GitHub and other application s
 * username is your username on GitHub.
 * password is your password on GitHub, if you have 2FA activated please create a new personal access token and use this as password.
 
-Start GitSpector and have fun :)
+Start GitSpector with ```electron .``` in the root folder.
 
 # Picture time!
 GIF of the tool:
