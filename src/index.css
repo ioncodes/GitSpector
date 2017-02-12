@@ -4,27 +4,32 @@
     height: 100%;
     overflow: hidden
 }
-.nano>.nano-content,
-.nano>.nano-pane {
+
+.nano>.nano-content, .nano>.nano-pane {
     position: absolute;
     right: 0;
     top: 0;
     bottom: 0
 }
+
 .nano>.nano-content {
     overflow: scroll;
     overflow-x: hidden;
     left: -10px
 }
+
 .nano>.nano-content:focus {
     outline: dotted thin
 }
+
 .nano>.nano-content::-webkit-scrollbar {
     display: none
 }
+
 .has-scrollbar>.nano-content::-webkit-scrollbar {
     display: block
 }
+
 .nano>.nano-pane {
     background: rgba(0, 0, 0, .25);
     width: 10px;
@@ -38,6 +43,7 @@
     -webkit-border-radius: 5px;
     border-radius: 5px
 }
+
 .nano>.nano-pane>.nano-slider {
     background: #444;
     background: rgba(0, 0, 0, .5);
@@ -47,56 +53,58 @@
     -webkit-border-radius: 3px;
     border-radius: 3px
 }
-.nano-pane.active,
-.nano-pane.flashed,
-.nano:hover>.nano-pane {
+
+.nano-pane.active, .nano-pane.flashed, .nano:hover>.nano-pane {
     visibility: visible\9;
     opacity: .99
 }
+
 body {
     margin: 0;
     color: #eee;
     font: 300 18px/18px Roboto, sans-serif;
 }
-*,
-:after,
-:before {
+
+*, :after, :before {
     box-sizing: border-box
 }
+
 .pull-left {
     float: left
 }
+
 .pull-right {
     float: right
 }
-.clearfix:after,
-.clearfix:before {
+
+.clearfix:after, .clearfix:before {
     content: '';
     display: table
 }
+
 .clearfix:after {
     clear: both;
     display: block
 }
-.category .links-wrap .links:before,
-.category .links-wrap .links:after {
+
+.category .links-wrap .links:before, .category .links-wrap .links:after {
     content: '';
     position: absolute;
 }
+
 .mhn-news-app {
     height: 100%;
     width: 100%;
     max-width: 350px;
     /* 370 */
-
     max-height: 600px;
     /* 565 */
-
     overflow: hidden;
     position: fixed;
     left: 50%;
     margin-left: -167px;
 }
+
 .mhn-news-app>.header {
     height: 50px;
     position: relative;
@@ -104,13 +112,16 @@ body {
     background: #395373;
     text-align: center;
 }
+
 .mhn-news-app>.header a {
     color: #95b1d3;
 }
+
 .mhn-news-app>.header .title {
     font-weight: 500;
     display: inline-block;
 }
+
 .category {
     height: 200px;
     width: inherit;
@@ -119,6 +130,8 @@ body {
     padding: 40px 30px;
     position: relative;
 }
+
+
 /*
 .category:nth-child(1) {
     background: #f64c73
@@ -134,49 +147,61 @@ body {
 .category:nth-child(1) {
     background: #a8bf9a
 }
+
 .category:nth-child(2) {
     background: #ddca7e
 }
+
 .category:nth-child(3) {
     background: #d6877a
 }
+
 .category:nth-child(4) {
     background: #73748c
 }
+
 .category:nth-child(5) {
     background: #8a98a3
 }
-.category .statistic-wrap,
-.category .statistic-wrap .head {
+
+.category .statistic-wrap, .category .statistic-wrap .head {
     text-align: center;
 }
+
 .category .statistic-wrap {
     transition: all .3s ease-in-out 0s
 }
+
 .category .statistic-wrap .head {
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 60px;
 }
+
 .category .statistic-wrap .statistic {
     margin: 0 10px;
     display: inline-block;
     text-transform: uppercase;
 }
+
 .category .statistic-wrap .statistic .count {
     font-size: 14px;
     font-weight: 700;
 }
+
 .category .statistic-wrap .statistic .title {
     font-size: 12px;
     font-weight: 500;
 }
+
 .nano {
     height: 600px;
 }
+
 .fa {
     margin-left: 10px;
 }
+
 .topcorner {
     position: -webkit-sticky;
     position: sticky;
@@ -185,87 +210,8 @@ body {
     top: 10px;
     right: 10px;
 }
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
     margin: 0;
     padding: 0;
     border: 0;
@@ -273,50 +219,45 @@ video {
     font: inherit;
     vertical-align: baseline;
 }
+
 p {
     color: #4A4E69;
 }
+
+
 /* HTML5 display-role reset for older browsers */
 
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section,
-main {
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, main {
     display: block;
 }
+
 body {
     line-height: 1;
 }
-ol,
-ul {
+
+ol, ul {
     list-style: none;
 }
-blockquote,
-q {
+
+blockquote, q {
     quotes: none;
 }
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
+
+blockquote:before, blockquote:after, q:before, q:after {
     content: '';
     content: none;
 }
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+
 ul {
     margin-top: 10px;
 }
+
+
 /* --------------------------------
 
   Primary style
@@ -327,21 +268,24 @@ html * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-*,
-*:after,
-*:before {
+
+*, *:after, *:before {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+
 body {
     font-size: 100%;
     font: 300 18px/18px Roboto, sans-serif;
 }
+
 a {
     color: black;
     text-decoration: none;
 }
+
+
 /* --------------------------------
 
   Modules - reusable parts of our design
@@ -350,13 +294,14 @@ a {
 
 .img-replace {
     /* replace text with an image */
-
     display: inline-block;
     overflow: hidden;
     text-indent: 100%;
     color: transparent;
     white-space: nowrap;
 }
+
+
 /* --------------------------------
 
   xnugget info
@@ -372,6 +317,7 @@ a {
     bottom: 0;
     left: 0;
 }
+
 .cd-nugget-info a {
     position: relative;
     font-size: 14px;
@@ -380,19 +326,25 @@ a {
     -moz-transition: all 0.2s;
     transition: all 0.2s;
 }
+
 .no-touch .cd-nugget-info a:hover {
     opacity: .8;
 }
+
 .cd-nugget-info span {
     vertical-align: middle;
     display: inline-block;
 }
+
 .cd-nugget-info span svg {
     display: block;
 }
+
 .cd-nugget-info .cd-nugget-info-arrow {
     fill: #5e6e8d;
 }
+
+
 /* --------------------------------
 
   Main components
@@ -406,10 +358,13 @@ header {
     background-color: #5e6e8d;
     color: #FFF;
 }
+
 header h1 {
     font-size: 20px;
     font-size: 1.25rem;
 }
+
+
 /* --------------------------------
 
   xpopup
@@ -430,6 +385,7 @@ header h1 {
     -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
     transition: opacity 0.3s 0s, visibility 0s 0.3s;
 }
+
 .cd-popup.is-visible {
     opacity: 1;
     visibility: visible;
@@ -437,6 +393,7 @@ header h1 {
     -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
     transition: opacity 0.3s 0s, visibility 0s 0s;
 }
+
 .cd-popup-container {
     position: relative;
     width: 90%;
@@ -452,7 +409,6 @@ header h1 {
     -o-transform: translateY(-40px);
     transform: translateY(-40px);
     /* Force Hardware Acceleration in WebKit */
-
     -webkit-backface-visibility: hidden;
     -webkit-transition-property: -webkit-transform;
     -moz-transition-property: -moz-transform;
@@ -461,19 +417,23 @@ header h1 {
     -moz-transition-duration: 0.3s;
     transition-duration: 0.3s;
 }
+
 .cd-popup-container p {
     padding: 3em 1em;
 }
+
 .cd-popup-container .cd-buttons:after {
     content: "";
     display: table;
     clear: both;
 }
+
 .cd-popup-container .cd-buttons li {
     float: left;
     width: 50%;
     list-style: none;
 }
+
 .cd-popup-container .cd-buttons a {
     display: block;
     height: 60px;
@@ -484,20 +444,25 @@ header h1 {
     -moz-transition: background-color 0.2s;
     transition: background-color 0.2s;
 }
+
 .cd-popup-container .cd-buttons li:first-child a {
     background: #fc7169;
     border-radius: 0 0 0 .25em;
 }
+
 .no-touch .cd-popup-container .cd-buttons li:first-child a:hover {
     background-color: #fc8982;
 }
+
 .cd-popup-container .cd-buttons li:last-child a {
     background: #b6bece;
     border-radius: 0 0 .25em 0;
 }
+
 .no-touch .cd-popup-container .cd-buttons li:last-child a:hover {
     background-color: #c5ccd8;
 }
+
 .cd-popup-container .cd-popup-close {
     position: absolute;
     top: 8px;
@@ -505,8 +470,8 @@ header h1 {
     width: 30px;
     height: 30px;
 }
-.cd-popup-container .cd-popup-close::before,
-.cd-popup-container .cd-popup-close::after {
+
+.cd-popup-container .cd-popup-close::before, .cd-popup-container .cd-popup-close::after {
     content: '';
     position: absolute;
     top: 12px;
@@ -514,6 +479,7 @@ header h1 {
     height: 3px;
     background-color: #8f9cb5;
 }
+
 .cd-popup-container .cd-popup-close::before {
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
@@ -522,6 +488,7 @@ header h1 {
     transform: rotate(45deg);
     left: 8px;
 }
+
 .cd-popup-container .cd-popup-close::after {
     -webkit-transform: rotate(-45deg);
     -moz-transform: rotate(-45deg);
@@ -530,6 +497,7 @@ header h1 {
     transform: rotate(-45deg);
     right: 8px;
 }
+
 .is-visible .cd-popup-container {
     -webkit-transform: translateY(0);
     -moz-transform: translateY(0);
@@ -537,6 +505,7 @@ header h1 {
     -o-transform: translateY(0);
     transform: translateY(0);
 }
+
 @media only screen and (min-width: 1170px) {
     .cd-popup-container {
         margin: 8em auto;
@@ -544,50 +513,59 @@ header h1 {
 }
 
 @import url(http://fonts.googleapis.com/css?family=Pacifico);
-h4{
-  font-family: 'Pacifico', cursive;
+h4 {
+    font-family: 'Pacifico', cursive;
 }
-.form{
-  height: 30px;
-  width: 200px;
-  border-left:2px solid transparent;
-  border-top: 3px solid transparent;
-  border-right: 3px solid transparent;
-  margin: 10px;
+
+.form {
+    height: 30px;
+    width: 200px;
+    border-left: 2px solid transparent;
+    border-top: 3px solid transparent;
+    border-right: 3px solid transparent;
+    margin: 10px;
 }
-.form-default{
-  border-bottom: 3px solid #7f8c8d;
-  color:  #2c3e50;
+
+.form-default {
+    border-bottom: 3px solid #7f8c8d;
+    color: #2c3e50;
 }
-.form-default:focus{
-  border-bottom: 3px solid #2c3e50;
-  outline: none;
-  color: #2c3e50;
+
+.form-default:focus {
+    border-bottom: 3px solid #2c3e50;
+    outline: none;
+    color: #2c3e50;
 }
-.form-error{
-  border-bottom: 3px solid #e74c3c;
-  color: #e74c3c;
+
+.form-error {
+    border-bottom: 3px solid #e74c3c;
+    color: #e74c3c;
 }
-.form-error:focus{
-  border-bottom: 3px solid darkred;
-  outline: none;
-  color: #e74c3c;
+
+.form-error:focus {
+    border-bottom: 3px solid darkred;
+    outline: none;
+    color: #e74c3c;
 }
-.form-success{
-  border-bottom: 3px solid #2ecc71;
-  color: #2ecc71;
+
+.form-success {
+    border-bottom: 3px solid #2ecc71;
+    color: #2ecc71;
 }
-.form-success:focus{
-  border-bottom: 3px solid darkgreen;
-  outline: none;
-  color: #2ecc71;
+
+.form-success:focus {
+    border-bottom: 3px solid darkgreen;
+    outline: none;
+    color: #2ecc71;
 }
-.form-info{
-  border-bottom: 3px solid #3498db;
-  color: #3498db;
+
+.form-info {
+    border-bottom: 3px solid #3498db;
+    color: #3498db;
 }
-.form-info:focus{
-  border-bottom: 3px solid #2980b9;
-  outline: none;
-  color: #3498db;
+
+.form-info:focus {
+    border-bottom: 3px solid #2980b9;
+    outline: none;
+    color: #3498db;
 }

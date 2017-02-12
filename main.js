@@ -1,4 +1,9 @@
-const {app, BrowserWindow, Tray, Menu} = require('electron')
+const {
+    app,
+    BrowserWindow,
+    Tray,
+    Menu
+} = require('electron')
 const path = require('path')
 const url = require('url')
 
@@ -19,17 +24,26 @@ if (shouldQuit) {
     app.quit()
 }
 
-function createWindow () {
+function createWindow() {
     tray = new Tray(__dirname + '/icons/icon.ico')
-    const contextMenu = Menu.buildFromTemplate([
-        {label: 'Exit', click () {
+    const contextMenu = Menu.buildFromTemplate([{
+        label: 'Exit',
+        click() {
             app.quit()
-        }}
-    ])
+        }
+    }])
     tray.setToolTip('Open GitSpector')
     tray.setContextMenu(contextMenu)
 
-    win = new BrowserWindow({width: 350, height: 639, resizable: false, maximizable: false, fullscreenable: false, title: 'GitSpector', icon: __dirname + '/icons/icon.ico'})
+    win = new BrowserWindow({
+        width: 350,
+        height: 639,
+        resizable: false,
+        maximizable: false,
+        fullscreenable: false,
+        title: 'GitSpector',
+        icon: __dirname + '/icons/icon.ico'
+    })
     win.setMenu(null)
 
     win.loadURL(url.format({
@@ -38,7 +52,7 @@ function createWindow () {
         slashes: true
     }))
 
-    win.on('minimize',function(event){
+    win.on('minimize', function(event) {
         event.preventDefault()
         win.hide()
         isInTray = true
@@ -49,12 +63,12 @@ function createWindow () {
     })
 
     win.on('close', (event) => {
-      if( !app.isQuiting){
-          event.preventDefault()
-          win.hide()
-          isInTray = true
-      }
-      return false;
+        if (!app.isQuiting) {
+            event.preventDefault()
+            win.hide()
+            isInTray = true
+        }
+        return false;
     })
 
     tray.on('double-click', () => {
