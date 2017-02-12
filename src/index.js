@@ -1,7 +1,11 @@
 const fs = require('fs-extra');
 var request = require('then-request');
-var json = fs.readJsonSync(__dirname + '/data/projects.json', {throws: true});
-var settings = fs.readJsonSync(__dirname + '/data/settings.json', {throws: true});
+var projects = fs.readJsonSync(__dirname + '/data/projects.json', {
+    throws: true
+});
+var settings = fs.readJsonSync(__dirname + '/data/settings.json', {
+    throws: true
+});
 var authHeader = 'Basic ' + new Buffer(settings.username + ':' + settings.password).toString('base64');
 
 load();
@@ -9,23 +13,46 @@ load();
 function load() {
     var categoryWrap = document.createElement('div');
     categoryWrap.className = 'category-wrap';
-    for(var i = 0; i < json.length; i++) {
+    for (var i = 0; i < projects.length; i++) {
         (function() {
-            var url = json[i].url;
-            var git = json[i].git;
-            var name = json[i].name;
+            var url = projects[i].url;
+            var git = projects[i].git;
+            var name = projects[i].name;
             var success;
-            if(url !== "") {
-                request('GET', url).done(function (res) {
+            var head = document.createElement('div');
+            head.className = 'head';
+            head.innerText = name;
+            if (url !== "") {
+                request('GET', url).done(function(res) {
                     var body = JSON.parse(res.body.toString('utf-8'));
                     process.nextTick(function() {
-                        success = body.build.status; /* STATUS */
+                        if (body.build.status === 'success') {
+                            success = true;
+                        } else {
+                            success = false;
+                        }
+                        if (success) {
+                            var checkmark = document.createElement('i');
+                            checkmark.className = 'fa fa-check';
+                            checkmark.setAttribute('aria-hidden', 'true');
+                            head.appendChild(checkmark);
+                        } else {
+                            var cross = document.createElement('i');
+                            cross.className = 'fa fa-times';
+                            cross.setAttribute('aria-hidden', 'true');
+                            head.appendChild(cross);
+                        }
                         console.log(success);
                     });
                 });
             }
 
-            request('GET', git, {headers:{"User-Agent":"Electron","Authorization":authHeader}}).done(function (res) {
+            request('GET', git, {
+                headers: {
+                    "User-Agent": "Electron",
+                    "Authorization": authHeader
+                }
+            }).done(function(res) {
                 var body = JSON.parse(res.body.toString('utf-8'));
                 process.nextTick(function() {
                     var stars = body.stargazers_count;
@@ -38,26 +65,18 @@ function load() {
                     var statisticWrap = document.createElement('div');
                     statisticWrap.className = 'statistic-wrap';
 
-                    var head = document.createElement('div');
-                    head.className = 'head';
-                    head.innerText = name;
-
                     statisticWrap.appendChild(head);
 
-                    var moon = document.createElement('i');
-                    moon.className = 'fa fa-moon-o';
-                    head.appendChild(moon);
-
-                    for(var j = 0; j < 3; j++) {
+                    for (var j = 0; j < 3; j++) {
                         var statistic = document.createElement('div');
                         statistic.className = 'statistic';
 
                         var count = document.createElement('div');
                         count.className = 'count';
-                        if(j === 0) {
+                        if (j === 0) {
                             count.innerText = watchers;
                             console.log(watchers);
-                        } else if(j === 1) {
+                        } else if (j === 1) {
                             count.innerText = stars;
                             console.log(stars);
                         } else {
@@ -67,9 +86,9 @@ function load() {
 
                         var title = document.createElement('div');
                         title.className = 'title';
-                        if(j === 0) {
+                        if (j === 0) {
                             title.innerText = 'Watchers';
-                        } else if(j === 1) {
+                        } else if (j === 1) {
                             title.innerText = 'Stars';
                         } else {
                             title.innerText = 'Forks';
@@ -97,4 +116,73 @@ function load() {
     nano.appendChild(nanoContent);
 
     document.getElementById('body').appendChild(nano);
+}
+
+jQuery(document).ready(function($) {
+    //open popup
+    $('.cd-popup-trigger').on('click', function(event) {
+        event.preventDefault();
+        $('.cd-popup').addClass('is-visible');
+    });
+
+    //close popup
+    $('.cd-popup').on('click', function(event) {
+        if ($(event.target).is('.cd-popup-close') || $(event.target).is('.cd-popup')) {
+            event.preventDefault();
+            $(this).removeClass('is-visible');
+        }
+    });
+    //close popup when clicking the esc keyboard button
+    $(document).keyup(function(event) {
+        if (event.which == '27') {
+            $('.cd-popup').removeClass('is-visible');
+        }
+    });
+});
+
+function addProject() {
+    var git = document.getElementById('github-link').value;
+    var ci = document.getElementById('ci-link').value;
+    var name = document.getElementById('project-name').value;
+    var valid = true;
+    var ciSet = false;
+    if(git === '' || git === undefined) {
+        document.getElementById('github-link').className = 'form form-error';
+        valid = false;
+    }
+    if(name === '' || name === undefined) {
+        document.getElementById('project-name').className = 'form form-error';
+        valid = false;
+    }
+    if(ci !== '' && ci !== undefined) {
+        ciSet = true;
+    }
+    if(!valid) {
+        return;
+    }
+
+    git = convertGitHub(git);
+    if(ciSet) {
+        ci = convertAppVeyor(ci);
+    }
+
+    var json = {'url':ci, 'name':name, 'git':git};
+    projects.push(json);
+    console.log(projects);
+
+    fs.writeJsonSync(__dirname + '/data/projects.json', projects);
+
+    closePopup();
+}
+
+function closePopup() {
+    document.getElementsByClassName('cd-popup')[0].classList.remove('is-visible');
+}
+
+function convertGitHub(url) {
+    return url.replace('github.com/', 'api.github.com/repos/');
+}
+
+function convertAppVeyor(url) {
+    return url.replace('appveyor.com/project/', 'appveyor.com/api/projects/');
 }

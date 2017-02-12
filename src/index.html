@@ -1,11 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>GitSpector</title>
-    <link rel="stylesheet" type="text/css" href="index.css">
-  </head>
-  <body id="body">
-    <script src="index.js"></script>
-  </body>
+    <head>
+        <meta charset="UTF-8">
+        <title>GitSpector</title>
+        <link rel="stylesheet" type="text/css" href="index.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script>
+            try {
+                $ = jQuery = module.exports;
+            } catch(e) {}
+        </script>
+    </head>
+    <body id="body">
+        <div class="cd-popup" role="alert">
+            <div class="cd-popup-container">
+                 <input id="github-link" type="text" placeholder="GitHub Link" class="form form-info">
+                 <input id="project-name" type="text" placeholder="Project Name" class="form form-info">
+                 <input id="ci-link" type="text" placeholder="CI Link" class="form form-info">
+                <ul class="cd-buttons">
+                    <li><a onclick="addProject()" href="#0">Add</a></li>
+                    <li><a onclick="closePopup()" href="#0">Cancel</a></li>
+                </ul>
+                <a href="#0" class="cd-popup-close img-replace">Close</a>
+            </div>
+        </div>
+        <div class="topcorner cd-popup-trigger"><i class="fa fa-plus" aria-hidden="true"></i></div>
+        <script src="index.js"></script>
+    </body>
 </html>
