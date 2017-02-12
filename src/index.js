@@ -146,27 +146,31 @@ function addProject() {
     var name = document.getElementById('project-name').value;
     var valid = true;
     var ciSet = false;
-    if(git === '' || git === undefined) {
+    if (git === '' || git === undefined) {
         document.getElementById('github-link').className = 'form form-error';
         valid = false;
     }
-    if(name === '' || name === undefined) {
+    if (name === '' || name === undefined) {
         document.getElementById('project-name').className = 'form form-error';
         valid = false;
     }
-    if(ci !== '' && ci !== undefined) {
+    if (ci !== '' && ci !== undefined) {
         ciSet = true;
     }
-    if(!valid) {
+    if (!valid) {
         return;
     }
 
     git = convertGitHub(git);
-    if(ciSet) {
+    if (ciSet) {
         ci = convertAppVeyor(ci);
     }
 
-    var json = {'url':ci, 'name':name, 'git':git};
+    var json = {
+        'url': ci,
+        'name': name,
+        'git': git
+    };
     projects.push(json);
     console.log(projects);
 
