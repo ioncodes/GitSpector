@@ -43,7 +43,6 @@ function load() {
                             cross.setAttribute('aria-hidden', 'true');
                             head.appendChild(cross);
                         }
-                        console.log(success);
                     });
                 });
             }
@@ -59,7 +58,6 @@ function load() {
                     var stars = body.stargazers_count;
                     var watchers = body.subscribers_count;
                     var forks = body.forks_count;
-                    console.log(stars);
                     var category = document.createElement('div');
                     category.className = 'category';
 
@@ -76,13 +74,10 @@ function load() {
                         count.className = 'count';
                         if (j === 0) {
                             count.innerText = watchers;
-                            console.log(watchers);
                         } else if (j === 1) {
                             count.innerText = stars;
-                            console.log(stars);
                         } else {
                             count.innerText = forks;
-                            console.log(forks);
                         }
 
                         var title = document.createElement('div');
@@ -173,7 +168,6 @@ function addProject() {
         'git': git
     };
     projects.push(json);
-    console.log(projects);
 
     fs.writeJsonSync(__dirname + '/data/projects.json', projects);
 
@@ -202,4 +196,20 @@ function openUrl(url) {
         shell
     } = require('electron');
     shell.openExternal(url);
+}
+
+function setSettings() {
+    var user = document.getElementById('github-user').value;
+    var pass = document.getElementById('github-pass').value;
+    if(user === '') {
+        document.getElementById('github-user').className = 'form form-error';
+        return;
+    }
+    if(pass === '') {
+        document.getElementById('github-pass').className = 'form form-error';
+        return;
+    }
+    settings.username = user;
+    settings.password = pass;
+    fs.writeJsonSync(__dirname + '/data/settings.json', settings);
 }
