@@ -15,7 +15,7 @@
 </head>
 
 <body id="body">
-    <div class="cd-popup" role="alert">
+    <div class="cd-popup cd-popup-project" role="alert">
         <div class="cd-popup-container">
             <input id="github-link" type="text" placeholder="GitHub Link" class="form form-info">
             <input id="project-name" type="text" placeholder="Project Name" class="form form-info">
@@ -27,7 +27,19 @@
             <a href="#0" class="cd-popup-close img-replace">Close</a>
         </div>
     </div>
-    <div class="topcorner cd-popup-trigger"><i class="fa fa-plus" aria-hidden="true"></i></div>
+    <div class="cd-popup cd-popup-settings" role="alert">
+        <div class="cd-popup-container">
+            <input id="github-user" type="text" placeholder="GitHub Username" class="form form-info">
+            <input id="github-pass" type="text" placeholder="GitHub Password/Token" class="form form-info">
+            <ul class="cd-buttons">
+                <li><a onclick="addProject()" href="#0">Add</a></li>
+                <li><a onclick="closePopup()" href="#0">Cancel</a></li>
+            </ul>
+            <a href="#0" class="cd-popup-close img-replace">Close</a>
+        </div>
+    </div>
+    <div class="topcorner-right cd-popup-trigger-project"><i class="fa fa-plus" aria-hidden="true"></i></div>
+    <div class="topcorner-left cd-popup-trigger-settings"><i class="fa fa-wrench" aria-hidden="true"></i></div>
     <script src="index.js"></script>
 </body>
 

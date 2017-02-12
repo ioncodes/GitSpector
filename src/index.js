@@ -120,20 +120,20 @@ function load() {
 }
 
 jQuery(document).ready(function($) {
-    //open popup
-    $('.cd-popup-trigger').on('click', function(event) {
+    $('.cd-popup-trigger-project').on('click', function(event) {
         event.preventDefault();
-        $('.cd-popup').addClass('is-visible');
+        $('.cd-popup-project').addClass('is-visible');
     });
-
-    //close popup
+    $('.cd-popup-trigger-settings').on('click', function(event) {
+        event.preventDefault();
+        $('.cd-popup-settings').addClass('is-visible');
+    });
     $('.cd-popup').on('click', function(event) {
         if ($(event.target).is('.cd-popup-close') || $(event.target).is('.cd-popup')) {
             event.preventDefault();
             $(this).removeClass('is-visible');
         }
     });
-    //close popup when clicking the esc keyboard button
     $(document).keyup(function(event) {
         if (event.which == '27') {
             $('.cd-popup').removeClass('is-visible');
@@ -182,6 +182,7 @@ function addProject() {
 
 function closePopup() {
     document.getElementsByClassName('cd-popup')[0].classList.remove('is-visible');
+    document.getElementsByClassName('cd-popup')[1].classList.remove('is-visible');
 }
 
 function convertGitHub(url) {
