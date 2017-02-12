@@ -6,6 +6,19 @@ const {
 } = require('electron')
 const path = require('path')
 const url = require('url')
+const fs = require('fs-extra')
+
+fs.ensureDirSync(__dirname + '/src/data')
+fs.ensureFileSync(__dirname + '/src/data/settings.json')
+fs.ensureFileSync(__dirname + '/src/data/projects.json')
+console.log(fs.readFileSync(__dirname + '/src/data/projects.json', 'utf-8'))
+if(fs.readFileSync(__dirname + '/src/data/projects.json', 'utf-8') === '') {
+    fs.writeJsonSync(__dirname + '/src/data/projects.json', [])
+}
+console.log(fs.readFileSync(__dirname + '/src/data/settings.json', 'utf-8'))
+if(fs.readFileSync(__dirname + '/src/data/settings.json', 'utf-8') === '') {
+    fs.writeJsonSync(__dirname + '/src/data/settings.json', {"username":"<username>","password":"<password-or-token>"})
+}
 
 let win
 let tray = null
