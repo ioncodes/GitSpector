@@ -16,6 +16,7 @@ cd data
 Now create two files: 'projects.json' and 'settings.json'.
 
 projects.json stores the projects that you want to monitor.
+You don't need to write your projects, just create the file. You can add them within the application.
 ```json
 [{
     "url":"https://ci.appveyor.com/api/projects/ioncodes/dnpatch",
@@ -51,22 +52,40 @@ Start GitSpector with ```electron .``` in the root folder.
 # Picture time!
 GIF of the tool:
 
-![gif](http://i.imgur.com/zZ6aXmz.gif)
+![gif](http://i.imgur.com/ppjTzv1.gif)
 
 It closes/minimizes into tray!
 
 ![png](http://i.imgur.com/a1GfCLp.png)
+
+Add projects within the app!
+
+![png](http://i.imgur.com/C0jnn4U.png)
 
 # Features
 - [x] GitHub integration
 - [x] CI integration
 - [x] Tray minimization
 - [x] Good-looking UI
-- [ ] CI integration in UI
+- [X] CI integration in UI
 - [ ] GitLab integration
 - [ ] Auto refresh
-- [ ] Add project shortcut within application
+- [ ] Add project without restart
+- [X] Add project shortcut within application
 - [ ] Settings form within application
 - [ ] Easier/Automated setup
 - [ ] Desktop Notifications
 - [ ] GitHub OAuth2
+
+# Support
+- [X] AppVeyor
+- [ ] TravisCI
+- [X] GitHub Public
+- [ ] GitHub Private (never tried)
+- [ ] GitLab
+
+# How to
+Make sure you have created the files projects.json and settings.json. Also make sure that you have added your GitHub credentials in settings.json as mentioned above.
+Run it via ```electron .``` or download the release and start GitSpector.exe (not available yet).
+To add a new project click on the plus (+) at the right top corner. There you can add the link to your GitHub repository and add a name. If used, you can add the CI link, but it's not needed.
+The build status is marked with a tick or a cross at the right side of the project name.
