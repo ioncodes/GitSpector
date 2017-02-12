@@ -1,8 +1,12 @@
 {
-  "name"    : "gitspector",
-  "version" : "0.0.1",
-  "main"    : "main.js",
-  "scripts": {
+    "name"    : "gitspector",
+    "version" : "0.0.1",
+    "main"    : "main.js",
+    "scripts": {
         "start": "electron ."
+    },
+    "dependencies": {
+        "fs-extra": "2.0.0",
+        "then-request": "2.2.0"
     }
 }
