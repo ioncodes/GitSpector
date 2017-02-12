@@ -1,6 +1,6 @@
 const fs = require('fs-extra');
 var request = require('then-request');
-var json = fs.readJsonSync(__dirname + '/data/projects.json', {
+var projects = fs.readJsonSync(__dirname + '/data/projects.json', {
     throws: true
 });
 var settings = fs.readJsonSync(__dirname + '/data/settings.json', {
@@ -13,11 +13,11 @@ load();
 function load() {
     var categoryWrap = document.createElement('div');
     categoryWrap.className = 'category-wrap';
-    for (var i = 0; i < json.length; i++) {
+    for (var i = 0; i < projects.length; i++) {
         (function() {
-            var url = json[i].url;
-            var git = json[i].git;
-            var name = json[i].name;
+            var url = projects[i].url;
+            var git = projects[i].git;
+            var name = projects[i].name;
             var success;
             var head = document.createElement('div');
             head.className = 'head';
@@ -139,3 +139,50 @@ jQuery(document).ready(function($) {
         }
     });
 });
+
+function addProject() {
+    var git = document.getElementById('github-link').value;
+    var ci = document.getElementById('ci-link').value;
+    var name = document.getElementById('project-name').value;
+    var valid = true;
+    var ciSet = false;
+    if(git === '' || git === undefined) {
+        document.getElementById('github-link').className = 'form form-error';
+        valid = false;
+    }
+    if(name === '' || name === undefined) {
+        document.getElementById('project-name').className = 'form form-error';
+        valid = false;
+    }
+    if(ci !== '' && ci !== undefined) {
+        ciSet = true;
+    }
+    if(!valid) {
+        return;
+    }
+
+    git = convertGitHub(git);
+    if(ciSet) {
+        ci = convertAppVeyor(ci);
+    }
+
+    var json = {'url':ci, 'name':name, 'git':git};
+    projects.push(json);
+    console.log(projects);
+
+    fs.writeJsonSync(__dirname + '/data/projects.json', projects);
+
+    closePopup();
+}
+
+function closePopup() {
+    document.getElementsByClassName('cd-popup')[0].classList.remove('is-visible');
+}
+
+function convertGitHub(url) {
+    return url.replace('github.com/', 'api.github.com/repos/');
+}
+
+function convertAppVeyor(url) {
+    return url.replace('appveyor.com/project/', 'appveyor.com/api/projects/');
+}
