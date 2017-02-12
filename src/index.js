@@ -197,6 +197,8 @@ function toGitHub(url) {
 }
 
 function openUrl(url) {
-    const {shell} = require('electron');
+    const {
+        shell
+    } = require('electron');
     shell.openExternal(url);
 }
