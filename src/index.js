@@ -21,6 +21,7 @@ function load() {
             var success;
             var head = document.createElement('div');
             head.className = 'head';
+            head.setAttribute('onclick', 'openUrl("' + toGitHub(git) + '")');
             head.innerText = name;
             if (url !== "") {
                 request('GET', url).done(function(res) {
@@ -189,4 +190,13 @@ function convertGitHub(url) {
 
 function convertAppVeyor(url) {
     return url.replace('appveyor.com/project/', 'appveyor.com/api/projects/');
+}
+
+function toGitHub(url) {
+    return url.replace('api.github.com/repos/', 'github.com/');
+}
+
+function openUrl(url) {
+    const {shell} = require('electron');
+    shell.openExternal(url);
 }

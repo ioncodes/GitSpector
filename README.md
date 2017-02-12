@@ -67,20 +67,21 @@ Add projects within the app!
 - [x] CI integration
 - [x] Tray minimization
 - [x] Good-looking UI
-- [X] CI integration in UI
+- [x] CI integration in UI
+- [x] Click on head opens GitHub page
 - [ ] GitLab integration
 - [ ] Auto refresh
 - [ ] Add project without restart
-- [X] Add project shortcut within application
+- [x] Add project shortcut within application
 - [ ] Settings form within application
 - [ ] Easier/Automated setup
 - [ ] Desktop Notifications
 - [ ] GitHub OAuth2
 
 # Support
-- [X] AppVeyor
+- [x] AppVeyor
 - [ ] TravisCI
-- [X] GitHub Public
+- [x] GitHub Public
 - [ ] GitHub Private (never tried)
 - [ ] GitLab
 
@@ -89,3 +90,4 @@ Make sure you have created the files projects.json and settings.json. Also make 
 Run it via ```electron .``` or download the release and start GitSpector.exe (not available yet).
 To add a new project click on the plus (+) at the right top corner. There you can add the link to your GitHub repository and add a name. If used, you can add the CI link, but it's not needed.
 The build status is marked with a tick or a cross at the right side of the project name.
+To open the GitHub page, click on the name/header.
