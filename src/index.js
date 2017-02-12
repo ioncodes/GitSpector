@@ -201,11 +201,11 @@ function openUrl(url) {
 function setSettings() {
     var user = document.getElementById('github-user').value;
     var pass = document.getElementById('github-pass').value;
-    if(user === '') {
+    if (user === '') {
         document.getElementById('github-user').className = 'form form-error';
         return;
     }
-    if(pass === '') {
+    if (pass === '') {
         document.getElementById('github-pass').className = 'form form-error';
         return;
     }
