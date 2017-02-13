@@ -51,7 +51,7 @@ Start GitSpector with ```electron .``` in the root folder.
 # Picture time!
 GIF of the tool:
 
-![gif](http://i.imgur.com/CFUCuXV.gifv)
+![gif](http://i.imgur.com/CFUCuXV.gif)
 
 It closes/minimizes into tray!
 
