@@ -189,6 +189,7 @@ function addProject() {
     var git = document.getElementById('github-link');
     var ci = document.getElementById('ci-link');
     var name = document.getElementById('project-name');
+    var nameVal = name.value;
     var ciSet = false;
 
     if (git.className.indexOf(' success') === -1) {
@@ -216,7 +217,7 @@ function addProject() {
 
     var json = {
         'url': ciUrl,
-        'name': name.value,
+        'name': nameVal,
         'git': gitUrl
     };
     projects.push(json);
@@ -229,7 +230,9 @@ function addProject() {
         load();
         setInterval(reload, 5000);
     } else {
-        loadNewProject(name.value);
+        console.log(name);
+        console.log(nameVal);
+        loadNewProject(nameVal);
     }
 
     git.value = '';
@@ -328,7 +331,10 @@ function setSettings() {
 function loadNewProject(name) {
     var categoryWrap = document.getElementsByClassName('category-wrap')[0];
     (function() {
+        console.log(projects.length);
         for (var i = 0; i < projects.length; i++) {
+            console.log(projects[i]);
+            console.log(name);
             if (projects[i].name === name) {
                 var success;
                 var git = projects[i].git;
