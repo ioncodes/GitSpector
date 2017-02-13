@@ -250,7 +250,7 @@ function reload() {
                                 stars.innerText = starCount;
                                 watchers.innerText = watchersCount;
                                 forks.innerText = forksCount;
-                                // todo: update the modified cache
+                                // todo: add windows notifications here
                                 var newModified = res.headers['last-modified'];
                                 githubCache[j].modified = newModified;
                             } else {
