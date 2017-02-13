@@ -12,6 +12,8 @@ var settings = fs.readJsonSync(__dirname + '/data/settings.json', {
 });
 var authHeader = 'Basic ' + new Buffer(settings.username + ':' + settings.password).toString('base64');
 var githubCache = []; // cache projectname and Last-Modified header here to not exceed the github api limits
+const colors = ['#a8bf9a', '#ddca7e', '#d6877a', '#73748c', '#8a98a3'];
+var colorCounter = 0;
 
 load();
 
@@ -72,6 +74,12 @@ function load() {
                     var forks = body.forks_count;
                     var category = document.createElement('div');
                     category.className = 'category';
+                    category.style = 'background: ' + colors[colorCounter] + ';';
+                    if (colorCounter === 4) {
+                        colorCounter = 0;
+                    } else {
+                        colorCounter++;
+                    }
 
                     var statisticWrap = document.createElement('div');
                     statisticWrap.className = 'statistic-wrap';
@@ -230,7 +238,7 @@ function setSettings() {
     } else {
         document.getElementById('github-pass').className = document.getElementById('github-pass').className.replace(/\serror/g, '');
     }
-    if(!valid) {
+    if (!valid) {
         return;
     }
     settings.username = user;

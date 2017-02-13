@@ -83,26 +83,6 @@ body {
     position: relative;
 }
 
-.category:nth-child(1) {
-    background: #a8bf9a
-}
-
-.category:nth-child(2) {
-    background: #ddca7e
-}
-
-.category:nth-child(3) {
-    background: #d6877a
-}
-
-.category:nth-child(4) {
-    background: #73748c
-}
-
-.category:nth-child(5) {
-    background: #8a98a3
-}
-
 .category .statistic-wrap, .category .statistic-wrap .head {
     text-align: center;
 }
