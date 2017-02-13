@@ -158,12 +158,16 @@ function addProject() {
     var valid = true;
     var ciSet = false;
     if (git === '' || git === undefined) {
-        document.getElementById('github-link').className = 'form form-error'; // todo: edit
+        document.getElementById('github-link').className += ' error';
         valid = false;
+    } else {
+        document.getElementById('github-link').className = document.getElementById('github-link').className.replace(/\serror/g, '');
     }
     if (name === '' || name === undefined) {
-        document.getElementById('project-name').className = 'form form-error'; // todo: edit
+        document.getElementById('project-name').className += ' error';
         valid = false;
+    } else {
+        document.getElementById('project-name').className = document.getElementById('project-name').className.replace(/\serror/g, '');
     }
     if (ci !== '' && ci !== undefined) {
         ciSet = true;
@@ -213,12 +217,20 @@ function openUrl(url) {
 function setSettings() {
     var user = document.getElementById('github-user').value;
     var pass = document.getElementById('github-pass').value;
+    var valid = true;
     if (user === '') {
-        document.getElementById('github-user').className = 'form form-error';
-        return;
+        document.getElementById('github-user').className += ' error';
+        valid = false;
+    } else {
+        document.getElementById('github-user').className = document.getElementById('github-user').className.replace(/\serror/g, '');
     }
     if (pass === '') {
-        document.getElementById('github-pass').className = 'form form-error';
+        document.getElementById('github-pass').className += ' error';
+        valid = false;
+    } else {
+        document.getElementById('github-pass').className = document.getElementById('github-pass').className.replace(/\serror/g, '');
+    }
+    if(!valid) {
         return;
     }
     settings.username = user;
