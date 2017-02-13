@@ -187,10 +187,12 @@ function addProject() {
     var name = document.getElementById('project-name');
     var ciSet = false;
 
-    if (git.className.indexOf(' error') !== -1) {
+    if (git.className.indexOf(' success') === -1) {
+        showMessage('Error!');
         return;
     }
-    if (name.className.indexOf(' error') !== -1) {
+    if (name.className.indexOf(' success') === -1) {
+        showMessage('Error!');
         return;
     }
     if (ci.value !== '') {
@@ -221,11 +223,27 @@ function addProject() {
     git.value = '';
     ci.value = '';
     name.value = '';
+
+    showMessage('Project added!');
 }
 
 function closePopup() {
     document.getElementsByClassName('cd-popup')[0].classList.remove('is-visible');
     document.getElementsByClassName('cd-popup')[1].classList.remove('is-visible');
+
+    // clear the input boxes and their states to avoid wrong modal data
+    document.getElementById('github-pass').className = document.getElementById('github-pass').className.replace(/\ssuccess/g, '');
+    document.getElementById('github-pass').className = document.getElementById('github-pass').className.replace(/\serror/g, '');
+    document.getElementById('github-user').className = document.getElementById('github-user').className.replace(/\ssuccess/g, '');
+    document.getElementById('github-user').className = document.getElementById('github-user').className.replace(/\serror/g, '');
+    document.getElementById('project-name').className = document.getElementById('project-name').className.replace(/\ssuccess/g, '');
+    document.getElementById('project-name').className = document.getElementById('project-name').className.replace(/\serror/g, '');
+    document.getElementById('github-link').className = document.getElementById('github-link').className.replace(/\ssuccess/g, '');
+    document.getElementById('github-link').className = document.getElementById('github-link').className.replace(/\serror/g, '');
+    document.getElementById('github-pass').value = '';
+    document.getElementById('github-user').value = '';
+    document.getElementById('project-name').value = '';
+    document.getElementById('github-link').value = '';
 }
 
 function convertGitHub(url) {
@@ -270,10 +288,12 @@ document.getElementById('github-pass').onblur = function() {
 function setSettings() {
     var user = document.getElementById('github-user');
     var pass = document.getElementById('github-pass');
-    if (user.className.indexOf(' error') !== -1) {
+    if (user.className.indexOf(' success') === -1) {
+        showMessage('Error!');
         return;
     }
-    if (pass.className.indexOf(' error') !== -1) {
+    if (pass.className.indexOf(' success') === -1) {
+        showMessage('Error!')
         return;
     }
     settings.username = user.value;
@@ -286,6 +306,7 @@ function setSettings() {
     pass.value = '';
 
     authHeader = 'Basic ' + new Buffer(settings.username + ':' + settings.password).toString('base64');
+    showMessage('Saved settings!');
 }
 
 function loadNewProject(name) {
@@ -467,4 +488,18 @@ function reload() {
             }
         })();
     }
+}
+
+function showMessage(msg) {
+    // Get the snackbar DIV
+    var x = document.getElementById("snackbar");
+
+    // Add the "show" class to DIV
+    x.className = "show";
+    x.innerText = msg;
+
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function() {
+        x.className = x.className.replace("show", "");
+    }, 3000);
 }
