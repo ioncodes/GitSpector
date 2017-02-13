@@ -52,13 +52,13 @@ function createWindow() {
     win = new BrowserWindow({
         width: 350,
         height: 639,
-        resizable: false,
-        maximizable: false,
+        resizable: true,
+        maximizable: true,
         fullscreenable: false,
         title: 'GitSpector',
         icon: __dirname + '/src/icons/icon.ico'
     })
-    win.setMenu(null)
+    //win.setMenu(null)
 
     win.loadURL(url.format({
         pathname: path.join(__dirname, '/src/index.html'),

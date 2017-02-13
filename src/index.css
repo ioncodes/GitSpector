@@ -453,6 +453,10 @@ input:focus {
     border: 2px solid #ba1b1b;
 }
 
+.success {
+    border: 2px solid #1ab645;
+}
+
 .btn {
     border: 2px solid transparent;
     background: #3498DB;

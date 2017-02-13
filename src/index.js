@@ -159,46 +159,64 @@ jQuery(document).ready(function($) {
     });
 });
 
-function addProject() {
+document.getElementById('github-link').onblur = function() {
     var git = document.getElementById('github-link').value;
-    var ci = document.getElementById('ci-link').value;
-    var name = document.getElementById('project-name').value;
-    var valid = true;
-    var ciSet = false;
-    if (git === '' || git === undefined) {
+    if (git === '' || !/http([s]?):\/\/github\.com\/.+?(?=\/).+?(?=(\/|$))/g.test(git)) {
+        document.getElementById('github-link').className = document.getElementById('github-link').className.replace(/\ssuccess/g, '');
         document.getElementById('github-link').className += ' error';
-        valid = false;
     } else {
         document.getElementById('github-link').className = document.getElementById('github-link').className.replace(/\serror/g, '');
+        document.getElementById('github-link').className += ' success';
     }
-    if (name === '' || name === undefined) {
+};
+
+document.getElementById('project-name').onblur = function() {
+    var name = document.getElementById('project-name').value;
+    if (name === '') {
+        document.getElementById('project-name').className = document.getElementById('project-name').className.replace(/\ssuccess/g, '');
         document.getElementById('project-name').className += ' error';
-        valid = false;
     } else {
         document.getElementById('project-name').className = document.getElementById('project-name').className.replace(/\serror/g, '');
+        document.getElementById('project-name').className += ' success';
     }
-    if (ci !== '' && ci !== undefined) {
-        ciSet = true;
-    }
-    if (!valid) {
+};
+
+function addProject() {
+    var git = document.getElementById('github-link');
+    var ci = document.getElementById('ci-link');
+    var name = document.getElementById('project-name');
+    var ciSet = false;
+
+    if(git.className.indexOf(' error') !== -1) {
         return;
     }
+    if(name.className.indexOf(' error') !== -1) {
+        return;
+    }
+    if (ci.value !== '') {
+        ciSet = true;
+    }
 
-    git = convertGitHub(git);
+    var gitUrl = convertGitHub(git.value);
+    var ciUrl;
     if (ciSet) {
-        ci = convertAppVeyor(ci);
+        ciUrl = convertAppVeyor(ci.value);
     }
 
     var json = {
-        'url': ci,
-        'name': name,
-        'git': git
+        'url': ciUrl,
+        'name': name.value,
+        'git': gitUrl
     };
     projects.push(json);
 
     fs.writeJsonSync(__dirname + '/data/projects.json', projects);
 
     closePopup();
+
+    git.value = '';
+    ci.value = '';
+    name.value = '';
 }
 
 function closePopup() {
@@ -222,30 +240,46 @@ function openUrl(url) {
     shell.openExternal(url);
 }
 
-function setSettings() {
-    var user = document.getElementById('github-user').value;
-    var pass = document.getElementById('github-pass').value;
-    var valid = true;
-    if (user === '') {
+document.getElementById('github-user').onblur = function() {
+    var name = document.getElementById('github-user').value;
+    if (name === '') {
+        document.getElementById('github-user').className = document.getElementById('github-user').className.replace(/\ssuccess/g, '');
         document.getElementById('github-user').className += ' error';
-        valid = false;
     } else {
         document.getElementById('github-user').className = document.getElementById('github-user').className.replace(/\serror/g, '');
+        document.getElementById('github-user').className += ' success';
     }
+};
+
+document.getElementById('github-pass').onblur = function() {
+    var pass = document.getElementById('github-pass').value;
     if (pass === '') {
+        document.getElementById('github-pass').className = document.getElementById('github-pass').className.replace(/\ssuccess/g, '');
         document.getElementById('github-pass').className += ' error';
         valid = false;
     } else {
         document.getElementById('github-pass').className = document.getElementById('github-pass').className.replace(/\serror/g, '');
+        document.getElementById('github-pass').className += ' success';
     }
-    if (!valid) {
+}
+
+function setSettings() {
+    var user = document.getElementById('github-user');
+    var pass = document.getElementById('github-pass');
+    if (user.className.indexOf(' error') !== -1) {
         return;
     }
-    settings.username = user;
-    settings.password = pass;
+    if (pass.className.indexOf(' error') !== -1) {
+        return;
+    }
+    settings.username = user.value;
+    settings.password = pass.value;
     fs.writeJsonSync(__dirname + '/data/settings.json', settings);
 
     closePopup();
+
+    user.value = '';
+    pass.value = '';
 }
 
 function reload() {
