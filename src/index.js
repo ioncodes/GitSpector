@@ -7,8 +7,11 @@ var settings = fs.readJsonSync(__dirname + '/data/settings.json', {
     throws: true
 });
 var authHeader = 'Basic ' + new Buffer(settings.username + ':' + settings.password).toString('base64');
+var githubCache = []; // cache projectname and Last-Modified header here to not exceed the github api limits
 
 load();
+
+setInterval(reload, 5000);
 
 function load() {
     var categoryWrap = document.createElement('div');
@@ -55,6 +58,8 @@ function load() {
             }).done(function(res) {
                 var body = JSON.parse(res.body.toString('utf-8'));
                 process.nextTick(function() {
+                    var cache = {'name':name,'modified':res.headers['last-modified']};
+                    githubCache.push(cache); // add cache object
                     var stars = body.stargazers_count;
                     var watchers = body.subscribers_count;
                     var forks = body.forks_count;
@@ -74,10 +79,13 @@ function load() {
                         count.className = 'count';
                         if (j === 0) {
                             count.innerText = watchers;
+                            count.id = name + '-watchers';
                         } else if (j === 1) {
                             count.innerText = stars;
+                            count.id = name + '-stars';
                         } else {
                             count.innerText = forks;
+                            count.id = name + '-forks';
                         }
 
                         var title = document.createElement('div');
@@ -212,4 +220,40 @@ function setSettings() {
     settings.username = user;
     settings.password = pass;
     fs.writeJsonSync(__dirname + '/data/settings.json', settings);
+}
+
+function reload() {
+    for(var i = 0; i < projects.length; i++) {
+        (function() {
+            var name = projects[i].name;
+            for(var j = 0; j < githubCache.length; j++) {
+                if(githubCache[j].name === name) {
+                    request('GET', projects[i].git, {headers:{'User-Agent': 'Electron','If-Modified-Since':githubCache[j].modified}}).done(function(res) { //
+                        process.nextTick(function() {
+                            if(res.statusCode !== 304) {
+                                // something changed
+                                var body = JSON.parse(res.body.toString('utf-8'));
+                                var starCount = body.stargazers_count;
+                                var watchersCount = body.subscribers_count;
+                                var forksCount = body.forks_count;
+                                console.log('changes')
+                                console.log(projects)
+                                console.log(i)
+                                var stars = document.getElementById(name + '-stars');
+                                var watchers = document.getElementById(name + '-watchers');
+                                var forks = document.getElementById(name + '-forks');
+                                stars.innerText = starCount;
+                                watchers.innerText = watchersCount;
+                                forks.innerText = forksCount;
+                                // todo: update the modified cache
+                            } else {
+                                // this repo has no changes
+                                console.log('no changes')
+                            }
+                        });
+                    });
+                }
+            }
+        })();
+    }
 }
