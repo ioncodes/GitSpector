@@ -388,7 +388,6 @@ function loadNewProject(name) {
                         }
 
                         category.appendChild(statisticWrap);
-                        console.log(category)
                         categoryWrap.appendChild(category);
                     });
                 });
