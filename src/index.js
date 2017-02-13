@@ -252,7 +252,7 @@ function reload() {
                             'If-Modified-Since': githubCache[j].modified,
                             'Authorization': authHeader
                         }
-                    }).done(function(res) { //
+                    }).done(function(res) {
                         process.nextTick(function() {
                             if (res.statusCode !== 304) {
                                 // something changed
