@@ -201,6 +201,8 @@ function addProject() {
     var ciUrl;
     if (ciSet) {
         ciUrl = convertAppVeyor(ci.value);
+    } else {
+        ciUrl = '';
     }
 
     var json = {
@@ -214,11 +216,11 @@ function addProject() {
 
     closePopup();
 
+    loadNewProject(name.value);
+
     git.value = '';
     ci.value = '';
     name.value = '';
-
-    loadNewProject(name.value);
 }
 
 function closePopup() {
@@ -386,6 +388,7 @@ function loadNewProject(name) {
                         }
 
                         category.appendChild(statisticWrap);
+                        console.log(category)
                         categoryWrap.appendChild(category);
                     });
                 });
