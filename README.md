@@ -12,14 +12,13 @@ Click on the plus at the top right corner. Insert the link of the GitHub reposit
 You can select any name you want, but it's recommended to use the repository's name.  
 If it uses some sort of CI (see Support section first!), you can additionally add the url to the project, example: https://ci.appveyor.com/project/ioncodes/dnpatch.  
 Now you can hit 'Add'.  
-At the moment, you need to restart the application after adding projects and changing settings.  
 By minimizing the application, it will minimize into the tray.
 You can click on the name of the project to open the GitHub page in your browser.
 
 # Picture time!
 GIF of the tool:
 
-![gif](http://i.imgur.com/OF16exq.gif)
+![gif](http://i.imgur.com/cWf2yNW.gif)
 
 It closes/minimizes into tray!
 
@@ -46,10 +45,10 @@ While writing this readme someone starred Electron, I will tell you my spy trick
 - [x] Click on head opens GitHub page
 - [ ] GitLab integration
 - [x] Auto refresh
-- [ ] Add project without restart
+- [x] Add project without restart
 - [x] Add project shortcut within application
 - [x] Settings form within application
-- [ ] Apply settings without restart
+- [x] Apply settings without restart
 - [x] Easier/Automated setup
 - [x] Desktop Notifications
 

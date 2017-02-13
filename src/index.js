@@ -18,7 +18,7 @@ var githubCache = []; // cache projectname and Last-Modified header here to not 
 const colors = ['#a8bf9a', '#ddca7e', '#d6877a', '#73748c', '#8a98a3'];
 var colorCounter = 0;
 
-if(projects.length > 0) {
+if (projects.length > 0) {
     load();
     setInterval(reload, 5000);
 }
@@ -205,7 +205,7 @@ function addProject() {
     }
 
     var gitUrl = convertGitHub(git.value);
-    if(gitUrl.endsWith('/')) {
+    if (gitUrl.endsWith('/')) {
         gitUrl = gitUrl.substring(0, gitUrl.length - 1);
     }
     var ciUrl;
@@ -226,7 +226,7 @@ function addProject() {
 
     closePopup();
 
-    if(projects.length === 1) {
+    if (projects.length === 1) {
         load();
         setInterval(reload, 5000);
     } else {
