@@ -69,57 +69,9 @@ body {
     box-sizing: border-box
 }
 
-.pull-left {
-    float: left
-}
-
-.pull-right {
-    float: right
-}
-
-.clearfix:after, .clearfix:before {
-    content: '';
-    display: table
-}
-
-.clearfix:after {
-    clear: both;
-    display: block
-}
-
 .category .links-wrap .links:before, .category .links-wrap .links:after {
     content: '';
     position: absolute;
-}
-
-.mhn-news-app {
-    height: 100%;
-    width: 100%;
-    max-width: 350px;
-    /* 370 */
-    max-height: 600px;
-    /* 565 */
-    overflow: hidden;
-    position: fixed;
-    left: 50%;
-    margin-left: -167px;
-}
-
-.mhn-news-app>.header {
-    height: 50px;
-    position: relative;
-    padding: 15px 10px;
-    background: #395373;
-    text-align: center;
-}
-
-.mhn-news-app>.header a {
-    color: #95b1d3;
-}
-
-.mhn-news-app>.header .title {
-    font-weight: 500;
-    display: inline-block;
 }
 
 .category {
@@ -130,19 +82,6 @@ body {
     padding: 40px 30px;
     position: relative;
 }
-
-
-/*
-.category:nth-child(1) {
-    background: #f64c73
-}
-.category:nth-child(2) {
-    background: #20d2bb
-}
-.category:nth-child(3) {
-    background: #c873f4
-}
-*/
 
 .category:nth-child(1) {
     background: #a8bf9a
@@ -202,10 +141,6 @@ body {
     height: 600px;
 }
 
-.fa {
-    margin-left: 10px;
-}
-
 .topcorner-right {
     position: -webkit-sticky;
     position: sticky;
@@ -221,7 +156,7 @@ body {
     position: absolute;
     z-index: 999;
     top: 10px;
-    left: 10px;
+    left: 0;
 }
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
@@ -238,7 +173,7 @@ p {
 }
 
 
-/* HTML5 display-role reset for older browsers */
+/* Modal */
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, main {
     display: block;
@@ -270,13 +205,6 @@ ul {
     margin-top: 10px;
 }
 
-
-/* --------------------------------
-
-  Primary style
-
-  -------------------------------- */
-
 html * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -298,28 +226,17 @@ a {
     text-decoration: none;
 }
 
-
-/* --------------------------------
-
-  Modules - reusable parts of our design
-
-  -------------------------------- */
+.fa {
+    margin-left: 10px;
+}
 
 .img-replace {
-    /* replace text with an image */
     display: inline-block;
     overflow: hidden;
     text-indent: 100%;
     color: transparent;
     white-space: nowrap;
 }
-
-
-/* --------------------------------
-
-  xnugget info
-
-  -------------------------------- */
 
 .cd-nugget-info {
     text-align: center;
@@ -357,13 +274,6 @@ a {
     fill: #5e6e8d;
 }
 
-
-/* --------------------------------
-
-  Main components
-
-  -------------------------------- */
-
 header {
     height: 200px;
     line-height: 200px;
@@ -376,13 +286,6 @@ header h1 {
     font-size: 20px;
     font-size: 1.25rem;
 }
-
-
-/* --------------------------------
-
-  xpopup
-
-  -------------------------------- */
 
 .cd-popup {
     z-index: 99999;
@@ -534,66 +437,7 @@ header h1 {
 }
 
 
-/*
-@import url(http://fonts.googleapis.com/css?family=Pacifico);
-h4 {
-    font-family: 'Pacifico', cursive;
-}
-
-.form {
-    height: 30px;
-    width: 200px;
-    border-left: 2px solid transparent;
-    border-top: 3px solid transparent;
-    border-right: 3px solid transparent;
-    margin: 10px;
-}
-
-.form-default {
-    border-bottom: 3px solid #7f8c8d;
-    color: #2c3e50;
-}
-
-.form-default:focus {
-    border-bottom: 3px solid #2c3e50;
-    outline: none;
-    color: #2c3e50;
-}
-
-.form-error {
-    border-bottom: 3px solid #e74c3c;
-    color: #e74c3c;
-}
-
-.form-error:focus {
-    border-bottom: 3px solid darkred;
-    outline: none;
-    color: #e74c3c;
-}
-
-.form-success {
-    border-bottom: 3px solid #2ecc71;
-    color: #2ecc71;
-}
-
-.form-success:focus {
-    border-bottom: 3px solid darkgreen;
-    outline: none;
-    color: #2ecc71;
-}
-
-.form-info {
-    border-bottom: 3px solid #3498db;
-    color: #3498db;
-}
-
-.form-info:focus {
-    border-bottom: 3px solid #2980b9;
-    outline: none;
-    color: #3498db;
-}
-
-*/
+/* Modal UI Components */
 
 * {
     box-sizing: border-box;
