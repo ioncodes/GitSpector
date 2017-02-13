@@ -158,11 +158,11 @@ function addProject() {
     var valid = true;
     var ciSet = false;
     if (git === '' || git === undefined) {
-        document.getElementById('github-link').className = 'form form-error';
+        document.getElementById('github-link').className = 'form form-error'; // todo: edit
         valid = false;
     }
     if (name === '' || name === undefined) {
-        document.getElementById('project-name').className = 'form form-error';
+        document.getElementById('project-name').className = 'form form-error'; // todo: edit
         valid = false;
     }
     if (ci !== '' && ci !== undefined) {
@@ -224,6 +224,8 @@ function setSettings() {
     settings.username = user;
     settings.password = pass;
     fs.writeJsonSync(__dirname + '/data/settings.json', settings);
+
+    closePopup();
 }
 
 function reload() {
