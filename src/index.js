@@ -278,7 +278,6 @@ function reload() {
                                 stars.innerText = starCount;
                                 watchers.innerText = watchersCount;
                                 forks.innerText = forksCount;
-                                // todo: add windows notifications here
                                 if (starChanged) {
                                     notifier.notify({
                                         'title': 'GitSpector',
