@@ -265,19 +265,22 @@ function reload() {
                                 if(starChanged) {
                                     notifier.notify({
                                         'title': 'GitSpector',
-                                        'message': 'Someone has starred ' + name
+                                        'message': 'Someone has starred ' + name,
+                                        'icon': __dirname + '/icons/star.png'
                                     });
                                 }
                                 if(watchersChanged) {
                                     notifier.notify({
                                         'title': 'GitSpector',
-                                        'message': 'Someone is watching ' + name
+                                        'message': 'Someone is watching ' + name,
+                                        'icon': __dirname + '/icons/watch.png'
                                     });
                                 }
                                 if(forksChanged) {
                                     notifier.notify({
                                         'title': 'GitSpector',
-                                        'message': 'Someone has forked ' + name
+                                        'message': 'Someone has forked ' + name,
+                                        'icon': __dirname + '/icons/fork.png'
                                     });
                                 }
                                 var newModified = res.headers['last-modified'];

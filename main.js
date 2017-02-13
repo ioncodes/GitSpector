@@ -39,7 +39,7 @@ if (shouldQuit) {
 }
 
 function createWindow() {
-    tray = new Tray(__dirname + '/icons/icon.ico')
+    tray = new Tray(__dirname + '/src/icons/icon.ico')
     const contextMenu = Menu.buildFromTemplate([{
         label: 'Exit',
         click() {
@@ -56,7 +56,7 @@ function createWindow() {
         maximizable: false,
         fullscreenable: false,
         title: 'GitSpector',
-        icon: __dirname + '/icons/icon.ico'
+        icon: __dirname + '/src/icons/icon.ico'
     })
     //win.setMenu(null)
 
