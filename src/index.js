@@ -1,5 +1,7 @@
 const fs = require('fs-extra');
-var request = require('then-request');
+const request = require('then-request');
+const {shell} = require('electron');
+const notifier = require('node-notifier');
 var projects = fs.readJsonSync(__dirname + '/data/projects.json', {
     throws: true
 });
@@ -203,9 +205,6 @@ function toGitHub(url) {
 }
 
 function openUrl(url) {
-    const {
-        shell
-    } = require('electron');
     shell.openExternal(url);
 }
 
@@ -241,16 +240,46 @@ function reload() {
                             if (res.statusCode !== 304) {
                                 // something changed
                                 var body = JSON.parse(res.body.toString('utf-8'));
+                                var starChanged = false;
+                                var forksChanged = false;
+                                var watchersChanged = false;
                                 var starCount = body.stargazers_count;
                                 var watchersCount = body.subscribers_count;
                                 var forksCount = body.forks_count;
                                 var stars = document.getElementById(name + '-stars');
+                                if(starCount.toString() !== stars.innerText) {
+                                    starChanged = true;
+                                }
                                 var watchers = document.getElementById(name + '-watchers');
+                                if(watchersCount.toString() !== watchers.innerText) {
+                                    watchersChanged = true;
+                                }
                                 var forks = document.getElementById(name + '-forks');
+                                if(forksCount.toString() !== forks.innerText) {
+                                    forksChanged = true;
+                                }
                                 stars.innerText = starCount;
                                 watchers.innerText = watchersCount;
                                 forks.innerText = forksCount;
                                 // todo: add windows notifications here
+                                if(starChanged) {
+                                    notifier.notify({
+                                        'title': 'GitSpector',
+                                        'message': 'Someone has starred ' + name
+                                    });
+                                }
+                                if(watchersChanged) {
+                                    notifier.notify({
+                                        'title': 'GitSpector',
+                                        'message': 'Someone is watching ' + name
+                                    });
+                                }
+                                if(forksChanged) {
+                                    notifier.notify({
+                                        'title': 'GitSpector',
+                                        'message': 'Someone has forked ' + name
+                                    });
+                                }
                                 var newModified = res.headers['last-modified'];
                                 githubCache[j].modified = newModified;
                             } else {
