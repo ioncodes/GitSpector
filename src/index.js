@@ -187,10 +187,10 @@ function addProject() {
     var name = document.getElementById('project-name');
     var ciSet = false;
 
-    if(git.className.indexOf(' error') !== -1) {
+    if (git.className.indexOf(' error') !== -1) {
         return;
     }
-    if(name.className.indexOf(' error') !== -1) {
+    if (name.className.indexOf(' error') !== -1) {
         return;
     }
     if (ci.value !== '') {
@@ -217,6 +217,8 @@ function addProject() {
     git.value = '';
     ci.value = '';
     name.value = '';
+
+    loadNewProject(name.value);
 }
 
 function closePopup() {
@@ -281,6 +283,115 @@ function setSettings() {
     user.value = '';
     pass.value = '';
 }
+
+function loadNewProject(name) {
+    var categoryWrap = document.getElementsByClassName('category-wrap')[0];
+    (function() {
+        for (var i = 0; i < projects.length; i++) {
+            if (projects[i].name === name) {
+                var success;
+                var git = projects[i].git;
+                var url = projects[i].url;
+                var head = document.createElement('div');
+                head.className = 'head';
+                head.setAttribute('onclick', 'openUrl("' + toGitHub(git) + '")');
+                head.innerText = name;
+                if (url !== "") {
+                    request('GET', url).done(function(res) {
+                        var body = JSON.parse(res.body.toString('utf-8'));
+                        process.nextTick(function() {
+                            if (body.build.status === 'success') {
+                                success = true;
+                            } else {
+                                success = false;
+                            }
+                            if (success) {
+                                var checkmark = document.createElement('i');
+                                checkmark.className = 'fa fa-check';
+                                checkmark.setAttribute('aria-hidden', 'true');
+                                head.appendChild(checkmark);
+                            } else {
+                                var cross = document.createElement('i');
+                                cross.className = 'fa fa-times';
+                                cross.setAttribute('aria-hidden', 'true');
+                                head.appendChild(cross);
+                            }
+                        });
+                    });
+                }
+
+                request('GET', git, {
+                    headers: {
+                        "User-Agent": "Electron",
+                        "Authorization": authHeader
+                    }
+                }).done(function(res) {
+                    var body = JSON.parse(res.body.toString('utf-8'));
+                    process.nextTick(function() {
+                        var cache = {
+                            'name': name,
+                            'modified': res.headers['last-modified']
+                        };
+                        githubCache.push(cache); // add cache object
+                        var stars = body.stargazers_count;
+                        var watchers = body.subscribers_count;
+                        var forks = body.forks_count;
+                        var category = document.createElement('div');
+                        category.className = 'category';
+                        category.style = 'background: ' + colors[colorCounter] + ';';
+                        if (colorCounter === 4) {
+                            colorCounter = 0;
+                        } else {
+                            colorCounter++;
+                        }
+
+                        var statisticWrap = document.createElement('div');
+                        statisticWrap.className = 'statistic-wrap';
+
+                        statisticWrap.appendChild(head);
+
+                        for (var j = 0; j < 3; j++) {
+                            var statistic = document.createElement('div');
+                            statistic.className = 'statistic';
+
+                            var count = document.createElement('div');
+                            count.className = 'count';
+                            if (j === 0) {
+                                count.innerText = watchers;
+                                count.id = name + '-watchers';
+                            } else if (j === 1) {
+                                count.innerText = stars;
+                                count.id = name + '-stars';
+                            } else {
+                                count.innerText = forks;
+                                count.id = name + '-forks';
+                            }
+
+                            var title = document.createElement('div');
+                            title.className = 'title';
+                            if (j === 0) {
+                                title.innerText = 'Watchers';
+                            } else if (j === 1) {
+                                title.innerText = 'Stars';
+                            } else {
+                                title.innerText = 'Forks';
+                            }
+
+                            statistic.appendChild(count);
+                            statistic.appendChild(title);
+
+                            statisticWrap.appendChild(statistic);
+                        }
+
+                        category.appendChild(statisticWrap);
+                        categoryWrap.appendChild(category);
+                    });
+                });
+            }
+        }
+    })();
+}
+
 
 function reload() {
     for (var i = 0; i < projects.length; i++) {
