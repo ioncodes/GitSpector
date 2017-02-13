@@ -10,6 +10,9 @@ var projects = fs.readJsonSync(__dirname + '/data/projects.json', {
 var settings = fs.readJsonSync(__dirname + '/data/settings.json', {
     throws: true
 });
+if (settings.username === '<username>' && settings.password === '<password-or-token>') {
+    showMessage('Apply settings first!');
+}
 var authHeader = 'Basic ' + new Buffer(settings.username + ':' + settings.password).toString('base64');
 var githubCache = []; // cache projectname and Last-Modified header here to not exceed the github api limits
 const colors = ['#a8bf9a', '#ddca7e', '#d6877a', '#73748c', '#8a98a3'];
@@ -307,6 +310,10 @@ function setSettings() {
 
     authHeader = 'Basic ' + new Buffer(settings.username + ':' + settings.password).toString('base64');
     showMessage('Saved settings!');
+
+    if (projects.length === 0) {
+        showMessage('You can add projects now!');
+    }
 }
 
 function loadNewProject(name) {
