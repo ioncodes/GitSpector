@@ -282,6 +282,8 @@ function setSettings() {
 
     user.value = '';
     pass.value = '';
+
+    authHeader = 'Basic ' + new Buffer(settings.username + ':' + settings.password).toString('base64');
 }
 
 function loadNewProject(name) {
