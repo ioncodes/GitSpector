@@ -3,15 +3,13 @@ GitSpector - The Sherlock Holmes of the Gitland.
 
 ## What's this?
 GitSpector is a beautiful app, which interacts with chosen GitHub/GitLab Repositories and monitors it's informations, such as amount of stargazers. Aswell, it monitors the build status of your repository, it supports the major CI providers, such as AppVeyor and TravisCI.
+It runs on Windows, OS X and Linux.
 
 # Setup
 ```
 git clone https://github.com/ioncodes/GitSpector.git
 npm install
 npm install electron -g
-cd src/
-mkdir data
-cd data
 ```
 Now create two files: 'projects.json' and 'settings.json'.
 
@@ -41,6 +39,7 @@ You don't need to write your projects, just create the file. You can add them wi
 * git is the API url for git repo.
 
 settings.json stores your authentication data for GitHub and other application settings.
+You don't need to manually set them, just start up the application and click on the wrench at the top left corner.
 ```json
 {"username":"your-username","password":"your-password"}
 ```
@@ -52,7 +51,7 @@ Start GitSpector with ```electron .``` in the root folder.
 # Picture time!
 GIF of the tool:
 
-![gif](http://i.imgur.com/ppjTzv1.gif)
+![gif](http://i.imgur.com/CFUCuXV.gifv)
 
 It closes/minimizes into tray!
 
@@ -62,6 +61,10 @@ Add projects within the app!
 
 ![png](http://i.imgur.com/C0jnn4U.png)
 
+Settings can be changed within the app!
+
+![png](http://i.imgur.com/lhNlvTy.png)
+
 # Features
 - [x] GitHub integration
 - [x] CI integration
@@ -70,12 +73,13 @@ Add projects within the app!
 - [x] CI integration in UI
 - [x] Click on head opens GitHub page
 - [ ] GitLab integration
-- [ ] Auto refresh
+- [x] Auto refresh
 - [ ] Add project without restart
 - [x] Add project shortcut within application
-- [ ] Settings form within application
-- [ ] Easier/Automated setup
-- [ ] Desktop Notifications
+- [x] Settings form within application
+- [ ] Apply settings without restart
+- [x] Easier/Automated setup
+- [x] Desktop Notifications
 - [ ] GitHub OAuth2
 
 # Support
@@ -85,9 +89,14 @@ Add projects within the app!
 - [ ] GitHub Private (never tried)
 - [ ] GitLab
 
+# Infos
+* The update interval is set to 5 seconds (can be changed later)
+* Toast notifications are only available on OS X, Linux and Windows 10
+
 # How to
 Make sure you have created the files projects.json and settings.json. Also make sure that you have added your GitHub credentials in settings.json as mentioned above.
 Run it via ```electron .``` or download the release and start GitSpector.exe (not available yet).
 To add a new project click on the plus (+) at the right top corner. There you can add the link to your GitHub repository and add a name. If used, you can add the CI link, but it's not needed.
 The build status is marked with a tick or a cross at the right side of the project name.
 To open the GitHub page, click on the name/header.
+To set your credentials, click on the wrench at the top left corner, enter your username and password/token and hit save. Now restart the application.

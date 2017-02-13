@@ -1,6 +1,8 @@
 const fs = require('fs-extra');
 const request = require('then-request');
-const {shell} = require('electron');
+const {
+    shell
+} = require('electron');
 const notifier = require('node-notifier');
 var projects = fs.readJsonSync(__dirname + '/data/projects.json', {
     throws: true
@@ -247,36 +249,36 @@ function reload() {
                                 var watchersCount = body.subscribers_count;
                                 var forksCount = body.forks_count;
                                 var stars = document.getElementById(name + '-stars');
-                                if(starCount.toString() !== stars.innerText) {
+                                if (starCount.toString() !== stars.innerText) {
                                     starChanged = true;
                                 }
                                 var watchers = document.getElementById(name + '-watchers');
-                                if(watchersCount.toString() !== watchers.innerText) {
+                                if (watchersCount.toString() !== watchers.innerText) {
                                     watchersChanged = true;
                                 }
                                 var forks = document.getElementById(name + '-forks');
-                                if(forksCount.toString() !== forks.innerText) {
+                                if (forksCount.toString() !== forks.innerText) {
                                     forksChanged = true;
                                 }
                                 stars.innerText = starCount;
                                 watchers.innerText = watchersCount;
                                 forks.innerText = forksCount;
                                 // todo: add windows notifications here
-                                if(starChanged) {
+                                if (starChanged) {
                                     notifier.notify({
                                         'title': 'GitSpector',
                                         'message': 'Someone has starred ' + name,
                                         'icon': __dirname + '/icons/star.png'
                                     });
                                 }
-                                if(watchersChanged) {
+                                if (watchersChanged) {
                                     notifier.notify({
                                         'title': 'GitSpector',
                                         'message': 'Someone is watching ' + name,
                                         'icon': __dirname + '/icons/watch.png'
                                     });
                                 }
-                                if(forksChanged) {
+                                if (forksChanged) {
                                     notifier.notify({
                                         'title': 'GitSpector',
                                         'message': 'Someone has forked ' + name,
