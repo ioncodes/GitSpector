@@ -235,7 +235,8 @@ function reload() {
                     request('GET', projects[i].git, {
                         headers: {
                             'User-Agent': 'Electron',
-                            'If-Modified-Since': githubCache[j].modified
+                            'If-Modified-Since': githubCache[j].modified,
+                            'Authorization': authHeader
                         }
                     }).done(function(res) { //
                         process.nextTick(function() {

@@ -96,6 +96,7 @@ While writing this readme someone starred Electron, I will tell you my spy trick
 # Infos
 * The update interval is set to 5 seconds (can be changed later)
 * Toast notifications are only available on OS X, Linux and Windows 10
+* Your GitHub API rate limits shouldn't exceed, because I implemented GitHub's conditional requests.
 
 # How to
 Make sure you have created the files projects.json and settings.json. Also make sure that you have added your GitHub credentials in settings.json as mentioned above.
