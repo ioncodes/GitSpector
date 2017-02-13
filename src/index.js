@@ -236,9 +236,6 @@ function reload() {
                                 var starCount = body.stargazers_count;
                                 var watchersCount = body.subscribers_count;
                                 var forksCount = body.forks_count;
-                                console.log('changes')
-                                console.log(projects)
-                                console.log(i)
                                 var stars = document.getElementById(name + '-stars');
                                 var watchers = document.getElementById(name + '-watchers');
                                 var forks = document.getElementById(name + '-forks');
@@ -246,9 +243,10 @@ function reload() {
                                 watchers.innerText = watchersCount;
                                 forks.innerText = forksCount;
                                 // todo: update the modified cache
+                                var newModified = res.headers['last-modified'];
+                                githubCache[j].modified = newModified;
                             } else {
                                 // this repo has no changes
-                                console.log('no changes')
                             }
                         });
                     });
