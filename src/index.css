@@ -387,39 +387,12 @@ header h1 {
     background-color: #c5ccd8;
 }
 
-.cd-popup-container .cd-popup-close {
+.cd-popup-close {
     position: absolute;
-    top: 8px;
-    right: 8px;
-    width: 30px;
-    height: 30px;
-}
-
-.cd-popup-container .cd-popup-close::before, .cd-popup-container .cd-popup-close::after {
-    content: '';
-    position: absolute;
-    top: 12px;
-    width: 14px;
-    height: 3px;
-    background-color: #8f9cb5;
-}
-
-.cd-popup-container .cd-popup-close::before {
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
-    left: 8px;
-}
-
-.cd-popup-container .cd-popup-close::after {
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-    right: 8px;
+    color: rgb(0, 148, 255);
+    right: 10px;
+    top: 10px;
+    z-index: 99999999;
 }
 
 .is-visible .cd-popup-container {
