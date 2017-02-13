@@ -65,6 +65,10 @@ Settings can be changed within the app!
 
 ![png](http://i.imgur.com/lhNlvTy.png)
 
+While writing this readme someone starred Electron, I will tell you my spy tricks, I use GitSpector, which sends you toast notifications! ;)
+
+![png](http://i.imgur.com/e5PwyXI.png)
+
 # Features
 - [x] GitHub integration
 - [x] CI integration
