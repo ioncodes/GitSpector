@@ -5,6 +5,9 @@ GitSpector - The Sherlock Holmes of the Gitland.
 GitSpector is a beautiful app, which interacts with chosen GitHub/GitLab Repositories and monitors it's informations, such as amount of stargazers. Aswell, it monitors the build status of your repository, it supports the major CI providers, such as AppVeyor and TravisCI.
 It runs on Windows, OS X and Linux.
 
+## Status
+![badge](https://david-dm.org/ioncodes/GitSpector.svg) ![Github All Releases](https://img.shields.io/github/downloads/ioncodes/GitSpector/total.svg) ![GitHub release](https://img.shields.io/github/release/ioncodes/GitSpector.svg) ![GitHub Issues](https://img.shields.io/github/issues-raw/ioncodes/GitSpector.svg) ![license](https://img.shields.io/github/license/ioncodes/gitspector.svg)
+
 # Setup
 Download the package for your system [here](https://github.com/ioncodes/GitSpector/releases). Unzip it and go into to the root folder where GitSpector.* resides.  
 Start it and click on the wrench at the top left corner. Insert your GitHub username and your password, if you use 2FA please create a personal accesstoken on GitHub and use the token instead of the password. Make sure you set the public scope. Now, hit save.  
