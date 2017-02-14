@@ -38,3 +38,7 @@ src/data/projects\.json
 src/data/settings\.json
 
 src/data - Kopie/
+
+build/
+
+builder/
