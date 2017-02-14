@@ -16,30 +16,25 @@
 
 <body id="body">
     <div class="cd-popup cd-popup-project" role="alert">
-        <div class="cd-popup-container">
-            <input id="github-link" type="text" placeholder="GitHub Link" class="form form-info">
-            <input id="project-name" type="text" placeholder="Project Name" class="form form-info">
-            <input id="ci-link" type="text" placeholder="CI Link" class="form form-info">
-            <ul class="cd-buttons">
-                <li><a onclick="addProject()" href="#0">Add</a></li>
-                <li><a onclick="closePopup()" href="#0">Cancel</a></li>
-            </ul>
-            <a href="#0" class="cd-popup-close img-replace">Close</a>
+        <div class="cd-popup-container projects-container">
+            <div onclick="closePopup()" class="cd-popup-close"><i class="fa fa-times" aria-hidden="true"></i></div>
+            <input id="github-link" type="text" class="login-field input-top" value="" placeholder="GitHub Link">
+            <input id="project-name" type="text" class="login-field" value="" placeholder="Name">
+            <input id="ci-link" type="text" class="login-field" value="" placeholder="CI Link">
+            <a onclick="addProject()" class="btn btn-primary btn-large btn-block" href="#">Add</a>
         </div>
     </div>
     <div class="cd-popup cd-popup-settings" role="alert">
-        <div class="cd-popup-container">
-            <input id="github-user" type="text" placeholder="GitHub Username" class="form form-info">
-            <input id="github-pass" type="text" placeholder="GitHub Password/Token" class="form form-info">
-            <ul class="cd-buttons">
-                <li><a onclick="setSettings()" href="#0">Save</a></li>
-                <li><a onclick="closePopup()" href="#0">Cancel</a></li>
-            </ul>
-            <a href="#0" class="cd-popup-close img-replace">Close</a>
+        <div class="cd-popup-container settings-container">
+            <div onclick="closePopup()" class="cd-popup-close"><i class="fa fa-times" aria-hidden="true"></i></div>
+            <input id="github-user" type="text" class="login-field input-top" value="" placeholder="Username">
+            <input id="github-pass" type="password" class="login-field" value="" placeholder="Password/Token">
+            <a onclick="setSettings()" class="btn btn-primary btn-large btn-block" href="#">Save</a>
         </div>
     </div>
     <div class="topcorner-right cd-popup-trigger-project"><i class="fa fa-plus" aria-hidden="true"></i></div>
     <div class="topcorner-left cd-popup-trigger-settings"><i class="fa fa-wrench" aria-hidden="true"></i></div>
+    <div id="snackbar">Success!</div>
     <script src="index.js"></script>
 </body>
 

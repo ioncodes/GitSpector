@@ -76,15 +76,6 @@ function createWindow() {
         win = null
     })
 
-    win.on('close', (event) => {
-        if (!app.isQuiting) {
-            event.preventDefault()
-            win.hide()
-            isInTray = true
-        }
-        return false;
-    })
-
     tray.on('double-click', () => {
         win.show()
         win.focus()

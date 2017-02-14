@@ -69,57 +69,9 @@ body {
     box-sizing: border-box
 }
 
-.pull-left {
-    float: left
-}
-
-.pull-right {
-    float: right
-}
-
-.clearfix:after, .clearfix:before {
-    content: '';
-    display: table
-}
-
-.clearfix:after {
-    clear: both;
-    display: block
-}
-
 .category .links-wrap .links:before, .category .links-wrap .links:after {
     content: '';
     position: absolute;
-}
-
-.mhn-news-app {
-    height: 100%;
-    width: 100%;
-    max-width: 350px;
-    /* 370 */
-    max-height: 600px;
-    /* 565 */
-    overflow: hidden;
-    position: fixed;
-    left: 50%;
-    margin-left: -167px;
-}
-
-.mhn-news-app>.header {
-    height: 50px;
-    position: relative;
-    padding: 15px 10px;
-    background: #395373;
-    text-align: center;
-}
-
-.mhn-news-app>.header a {
-    color: #95b1d3;
-}
-
-.mhn-news-app>.header .title {
-    font-weight: 500;
-    display: inline-block;
 }
 
 .category {
@@ -129,39 +81,6 @@ body {
     background: teal;
     padding: 40px 30px;
     position: relative;
-}
-
-
-/*
-.category:nth-child(1) {
-    background: #f64c73
-}
-.category:nth-child(2) {
-    background: #20d2bb
-}
-.category:nth-child(3) {
-    background: #c873f4
-}
-*/
-
-.category:nth-child(1) {
-    background: #a8bf9a
-}
-
-.category:nth-child(2) {
-    background: #ddca7e
-}
-
-.category:nth-child(3) {
-    background: #d6877a
-}
-
-.category:nth-child(4) {
-    background: #73748c
-}
-
-.category:nth-child(5) {
-    background: #8a98a3
 }
 
 .category .statistic-wrap, .category .statistic-wrap .head {
@@ -202,11 +121,8 @@ body {
     height: 600px;
 }
 
-.fa {
-    margin-left: 10px;
-}
-
 .topcorner-right {
+    cursor: pointer;
     position: -webkit-sticky;
     position: sticky;
     position: absolute;
@@ -216,12 +132,13 @@ body {
 }
 
 .topcorner-left {
+    cursor: pointer;
     position: -webkit-sticky;
     position: sticky;
     position: absolute;
     z-index: 999;
     top: 10px;
-    left: 10px;
+    left: 0;
 }
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
@@ -238,7 +155,7 @@ p {
 }
 
 
-/* HTML5 display-role reset for older browsers */
+/* Modal */
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, main {
     display: block;
@@ -270,13 +187,6 @@ ul {
     margin-top: 10px;
 }
 
-
-/* --------------------------------
-
-  Primary style
-
-  -------------------------------- */
-
 html * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -298,28 +208,17 @@ a {
     text-decoration: none;
 }
 
-
-/* --------------------------------
-
-  Modules - reusable parts of our design
-
-  -------------------------------- */
+.fa {
+    margin-left: 10px;
+}
 
 .img-replace {
-    /* replace text with an image */
     display: inline-block;
     overflow: hidden;
     text-indent: 100%;
     color: transparent;
     white-space: nowrap;
 }
-
-
-/* --------------------------------
-
-  xnugget info
-
-  -------------------------------- */
 
 .cd-nugget-info {
     text-align: center;
@@ -357,13 +256,6 @@ a {
     fill: #5e6e8d;
 }
 
-
-/* --------------------------------
-
-  Main components
-
-  -------------------------------- */
-
 header {
     height: 200px;
     line-height: 200px;
@@ -376,13 +268,6 @@ header h1 {
     font-size: 20px;
     font-size: 1.25rem;
 }
-
-
-/* --------------------------------
-
-  xpopup
-
-  -------------------------------- */
 
 .cd-popup {
     z-index: 99999;
@@ -431,6 +316,14 @@ header h1 {
     transition-duration: 0.3s;
 }
 
+.settings-container {
+    height: 217px;
+}
+
+.projects-container {
+    height: 270px;
+}
+
 .cd-popup-container p {
     padding: 3em 1em;
 }
@@ -476,39 +369,13 @@ header h1 {
     background-color: #c5ccd8;
 }
 
-.cd-popup-container .cd-popup-close {
+.cd-popup-close {
+    cursor: pointer;
     position: absolute;
-    top: 8px;
-    right: 8px;
-    width: 30px;
-    height: 30px;
-}
-
-.cd-popup-container .cd-popup-close::before, .cd-popup-container .cd-popup-close::after {
-    content: '';
-    position: absolute;
-    top: 12px;
-    width: 14px;
-    height: 3px;
-    background-color: #8f9cb5;
-}
-
-.cd-popup-container .cd-popup-close::before {
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
-    left: 8px;
-}
-
-.cd-popup-container .cd-popup-close::after {
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-    right: 8px;
+    color: #3498DB;
+    right: 10px;
+    top: 10px;
+    z-index: 99999999;
 }
 
 .is-visible .cd-popup-container {
@@ -525,60 +392,184 @@ header h1 {
     }
 }
 
-@import url(http://fonts.googleapis.com/css?family=Pacifico);
-h4 {
-    font-family: 'Pacifico', cursive;
+
+/* Modal UI Components */
+
+* {
+    box-sizing: border-box;
 }
 
-.form {
-    height: 30px;
-    width: 200px;
-    border-left: 2px solid transparent;
-    border-top: 3px solid transparent;
-    border-right: 3px solid transparent;
-    margin: 10px;
-}
-
-.form-default {
-    border-bottom: 3px solid #7f8c8d;
-    color: #2c3e50;
-}
-
-.form-default:focus {
-    border-bottom: 3px solid #2c3e50;
+*:focus {
     outline: none;
-    color: #2c3e50;
 }
 
-.form-error {
-    border-bottom: 3px solid #e74c3c;
-    color: #e74c3c;
+.login {
+    margin: 20px auto;
+    width: 300px;
 }
 
-.form-error:focus {
-    border-bottom: 3px solid darkred;
-    outline: none;
-    color: #e74c3c;
+.login-screen {
+    background-color: #FFF;
+    padding: 20px;
+    border-radius: 5px
 }
 
-.form-success {
-    border-bottom: 3px solid #2ecc71;
-    color: #2ecc71;
+.app-title {
+    text-align: center;
+    color: #777;
 }
 
-.form-success:focus {
-    border-bottom: 3px solid darkgreen;
-    outline: none;
-    color: #2ecc71;
+.login-form {
+    text-align: center;
 }
 
-.form-info {
-    border-bottom: 3px solid #3498db;
-    color: #3498db;
+.control-group {
+    margin-bottom: 10px;
 }
 
-.form-info:focus {
-    border-bottom: 3px solid #2980b9;
-    outline: none;
-    color: #3498db;
+input {
+    text-align: center;
+    background-color: #ECF0F1;
+    border: 2px solid transparent;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: 200;
+    padding: 10px 0;
+    width: 250px;
+    transition: border .5s;
+    margin-bottom: 10px;
+}
+
+.input-top {
+    margin-top: 40px;
+}
+
+input:focus {
+    border: 2px solid #3498DB !important;
+    box-shadow: none;
+}
+
+.error {
+    border: 2px solid #ba1b1b;
+}
+
+.success {
+    border: 2px solid #1ab645;
+}
+
+.btn {
+    border: 2px solid transparent;
+    background: #3498DB;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 25px;
+    padding: 10px 0;
+    text-decoration: none;
+    text-shadow: none;
+    border-radius: 3px;
+    box-shadow: none;
+    transition: 0.25s;
+    display: block;
+    width: 250px;
+    margin: 0 auto;
+}
+
+.btn:hover {
+    background-color: #2980B9;
+}
+
+.login-link {
+    font-size: 12px;
+    color: #444;
+    display: block;
+    margin-top: 12px;
+}
+
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+
+#snackbar {
+    visibility: hidden;
+    /* Hidden by default. Visible on click */
+    min-width: 250px;
+    /* Set a default minimum width */
+    margin-left: -125px;
+    /* Divide value of min-width by 2 */
+    background-color: #333;
+    /* Black background color */
+    color: #fff;
+    /* White text color */
+    text-align: center;
+    /* Centered text */
+    border-radius: 2px;
+    /* Rounded borders */
+    padding: 16px;
+    /* Padding */
+    position: fixed;
+    /* Sit on top of the screen */
+    z-index: 9999999999;
+    /* Add a z-index if needed */
+    left: 50%;
+    /* Center the snackbar */
+    bottom: 30px;
+    /* 30px from the bottom */
+}
+
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+
+#snackbar.show {
+    visibility: visible;
+    /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+
+/* Animations to fade the snackbar in and out */
+
+@-webkit-keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
 }
